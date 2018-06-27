@@ -1,0 +1,6 @@
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Domain\bin\Debug\FundManager.Domain.dll
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Domain\bin\Debug\FundManager.Domain.pdb
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Domain\obj\Debug\FundManager.Domain.csprojAssemblyReference.cache
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Domain\obj\Debug\FundManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Domain\obj\Debug\FundManager.Domain.dll
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Domain\obj\Debug\FundManager.Domain.pdb

@@ -1,0 +1,9 @@
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\bin\Debug\FundManager.Repository.dll
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\bin\Debug\FundManager.Repository.pdb
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\bin\Debug\FundManager.Domain.dll
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\bin\Debug\FundManager.Domain.pdb
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\obj\Debug\FundManager.Repository.csprojAssemblyReference.cache
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\obj\Debug\FundManager.Repository.csproj.CoreCompileInputs.cache
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\obj\Debug\FundManager.Repository.csproj.CopyComplete
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\obj\Debug\FundManager.Repository.dll
+C:\Users\guilh\source\repos\GKB\Projects\FundManager\FundManager\FundManager.Repository\obj\Debug\FundManager.Repository.pdb

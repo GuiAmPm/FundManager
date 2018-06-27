@@ -1,0 +1,108 @@
+﻿<Window x:Class="FundManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:FundManager.Application.ViewModel;assembly=FundManager.Application"
+        xmlns:local="clr-namespace:FundManager"
+        mc:Ignorable="d"
+        Title="Fund Manager" Height="451" Width="931">
+    <Window.DataContext>
+        <viewmodel:StockViewModel />
+    </Window.DataContext>
+    <Grid>
+        <DockPanel LastChildFill="True" Margin="0">
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="78" VerticalAlignment="Top" Margin="0" DockPanel.Dock="Top">
+                <Grid>
+                    <Label Content="Price:" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TxtPriceInput" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" AutomationProperties.IsRequiredForForm="True">
+                        <Binding Path="InputPrice" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True" NotifyOnValidationError="True"/>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder x:Name="textBox"/>
+                                    <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                    <Label Content="Quantity:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="155,10,0,0"/>
+                    <TextBox x:Name="TxtQuantityInput" HorizontalAlignment="Left" Height="23" Margin="155,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140">
+                        <Binding Path="InputQuantity" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True"/>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder x:Name="textBox"/>
+                                    <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                    <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,10,0,0"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="300,36,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="{Binding InputType}">
+                        <ComboBoxItem Content="Equity"/>
+                        <ComboBoxItem Content="Bond"/>
+                    </ComboBox>
+                    <Button Content="Insert" HorizontalAlignment="Left" Margin="425,38,0,0" VerticalAlignment="Top" Width="120" Command="{Binding InsertStockToListCommand, Mode=OneWay}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="IsEnabled" Value="false" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ElementName=TxtPriceInput, Path=(Validation.HasError)}" Value="false" />
+                                            <Condition Binding="{Binding ElementName=TxtQuantityInput, Path=(Validation.HasError)}" Value="false" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="true" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+                </Grid>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1,0,0,0" HorizontalAlignment="Right" Width="303" Margin="0" DockPanel.Dock="Right">
+                <TreeView x:Name="TrvSummary" BorderThickness="0">
+                    <TreeViewItem Header="Equity" IsExpanded="true">
+                        <Label ContentStringFormat="Total Number: {0}" Content="{Binding TotalEquityCount}"/>
+                        <Label ContentStringFormat="Total Stock Weight: {0:N2}%" Content="{Binding TotalEquityStockWeight}" />
+                        <Label ContentStringFormat="Total Market Value: ${0:N2}" Content="{Binding TotalEquityMarketValue}" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Bond" IsExpanded="true">
+                        <Label ContentStringFormat="Total Number: {0}" Content="{Binding TotalBondCount}"/>
+                        <Label ContentStringFormat="Total Stock Weight: {0:N2}%" Content="{Binding TotalBondStockWeight}" />
+                        <Label ContentStringFormat="Total Market Value: ${0:N2}" Content="{Binding TotalBondMarketValue}" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="All" IsExpanded="true">
+                        <Label ContentStringFormat="Total Number: {0}" Content="{Binding TotalCount}"/>
+                        <Label ContentStringFormat="Total Stock Weight: {0:N2}%" Content="{Binding TotalStockWeight}" />
+                        <Label ContentStringFormat="Total Market Value: ${0:N2}" Content="{Binding TotalMarketValue}" />
+                    </TreeViewItem>
+                </TreeView>
+            </Border>
+            <DataGrid ItemsSource="{Binding StockList}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="ClmType" Header="Stock Type" Binding="{Binding TypeDescription, Mode=OneWay}" IsReadOnly="True" />
+                    <DataGridTextColumn x:Name="ClmName" Header="Stock Name" Binding="{Binding Name, Mode=OneWay}" IsReadOnly="True">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Highlight}" Value="true">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn x:Name="ClmPrice" Header="Price"  Binding="{Binding Price, StringFormat='$ \{0:N2\}', Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="ClmQuantity" Header="Quantity" Binding="{Binding Quantity, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="ClmMarketValue" Header="Market Value" Binding="{Binding MarketValue, Mode=OneWay, StringFormat='$ \{0:N2\}'}" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="ClmTransactionCost" Header="Transaction Cost" Binding="{Binding TransactionCost, Mode=OneWay, StringFormat='$ \{0:N2\}'}" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="ClmStockWeight" Header="Stock Weight" Binding="{Binding StockWeight, Mode=OneWay, StringFormat='\{0:N2\}%'}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Window>

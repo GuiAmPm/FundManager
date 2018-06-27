@@ -1,0 +1,6 @@
+C:\Users\guilh\Desktop\Github\FundManager\FundManager\FundManager.Domain\bin\Release\FundManager.Domain.dll
+C:\Users\guilh\Desktop\Github\FundManager\FundManager\FundManager.Domain\bin\Release\FundManager.Domain.pdb
+C:\Users\guilh\Desktop\Github\FundManager\FundManager\FundManager.Domain\obj\Release\FundManager.Domain.csprojAssemblyReference.cache
+C:\Users\guilh\Desktop\Github\FundManager\FundManager\FundManager.Domain\obj\Release\FundManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\guilh\Desktop\Github\FundManager\FundManager\FundManager.Domain\obj\Release\FundManager.Domain.dll
+C:\Users\guilh\Desktop\Github\FundManager\FundManager\FundManager.Domain\obj\Release\FundManager.Domain.pdb
